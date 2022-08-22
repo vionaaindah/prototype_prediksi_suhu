@@ -1,0 +1,261 @@
+Views,py
+def store(request):
+    if request.method == 'POST':
+        suhu_11 = request.POST['suhu_11']
+        suhu_10 = request.POST['suhu_10']
+        suhu_9 = request.POST['suhu_9']
+        suhu_8 = request.POST['suhu_8']
+        suhu_7 = request.POST['suhu_7']
+        suhu_6 = request.POST['suhu_6']
+        suhu_5 = request.POST['suhu_5']
+        suhu_4 = request.POST['suhu_4']
+        suhu_3 = request.POST['suhu_3']
+        suhu_2 = request.POST['suhu_2']
+        suhu_1 = request.POST['suhu_1']
+        suhu_dday = request.POST['suhu_dday']
+
+        suhu_mikro = [[suhu_11, suhu_10, suhu_9, suhu_8, suhu_7,
+                       suhu_6, suhu_5, suhu_4, suhu_3, suhu_2, suhu_1, suhu_dday]]
+
+        test_X = np.fft.fft(suhu_mikro)
+        test_X = test_X.reshape((test_X.shape[0], 1, test_X.shape[1]))
+
+        model = sett.model
+
+        # membuat prediksi
+        predict = model.predict(test_X)
+        test_X = test_X.reshape((test_X.shape[0], 12))
+
+        # invert scaling untuk prediksi
+        prediksi = np.concatenate((test_X, predict), axis=1)
+        prediksi = np.fft.ifft(prediksi)
+        prediksi = np.abs(prediksi)
+        prediksi = prediksi[:, -1]
+
+        result = '%.2f °C' % prediksi[-1]
+
+        request.session['result'] = result
+
+    return redirect('temperature.index')
+
+
+Temperature.html
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="flex flex-wrap mt-4">
+  <div class="w-full mb-12 xl:mb-0 px-4">
+    <div
+      class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded"
+    >
+      <div class="rounded-t mb-0 px-4 py-3 border-0">
+        <div class="flex flex-wrap items-center">
+          <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+            <h3 class="font-semibold text-base text-blueGray-700">
+              {{ title }}
+            </h3>
+          </div>
+        </div>
+      </div>
+      <div class="block w-full overflow-x-auto p-5 text-xs">
+        <form
+          action="{% url 'temperature.store' %}"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          {% csrf_token %}
+          <div class="mb-3 pt-0 leading-relaxed">
+            <div class="mb-3 pt-0 leading-relaxed">
+              <label class="label">
+                <span class="label-text text-sm">Suhu 11 Hari yang Lalu</span>
+              </label>
+              <input
+                type="number"
+                step="0.01"
+                placeholder="Suhu 11 Hari yang Lalu"
+                class="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border border-blueGray-300 outline-none focus:outline-none focus:ring w-full"
+                name="suhu_11"
+                required
+              />
+            </div>
+            <div class="mb-3 pt-0 leading-relaxed">
+              <label class="label">
+                <span class="label-text text-sm">Suhu 10 Hari yang Lalu</span>
+              </label>
+              <input
+                type="number"
+                step="0.01"
+                placeholder="Suhu 10 Hari yang Lalu"
+                class="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border border-blueGray-300 outline-none focus:outline-none focus:ring w-full"
+                name="suhu_10"
+                required
+              />
+            </div>
+            <div class="mb-3 pt-0 leading-relaxed">
+              <label class="label">
+                <span class="label-text text-sm">Suhu 9 Hari yang Lalu</span>
+              </label>
+              <input
+                type="number"
+                step="0.01"
+                placeholder="Suhu 9 Hari yang Lalu"
+                class="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border border-blueGray-300 outline-none focus:outline-none focus:ring w-full"
+                name="suhu_9"
+                required
+              />
+            </div>
+            <div class="mb-3 pt-0 leading-relaxed">
+              <label class="label">
+                <span class="label-text text-sm">Suhu 8 Hari yang Lalu</span>
+              </label>
+              <input
+                type="number"
+                step="0.01"
+                placeholder="Suhu 8 Hari yang Lalu"
+                class="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border border-blueGray-300 outline-none focus:outline-none focus:ring w-full"
+                name="suhu_8"
+                required
+              />
+            </div>
+            <div class="mb-3 pt-0 leading-relaxed">
+              <label class="label">
+                <span class="label-text text-sm">Suhu 7 Hari yang Lalu</span>
+              </label>
+              <input
+                type="number"
+                step="0.01"
+                placeholder="Suhu 7 Hari yang Lalu"
+                class="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border border-blueGray-300 outline-none focus:outline-none focus:ring w-full"
+                name="suhu_7"
+                required
+              />
+            </div>
+            <div class="mb-3 pt-0 leading-relaxed">
+              <label class="label">
+                <span class="label-text text-sm">Suhu 6 Hari yang Lalu</span>
+              </label>
+              <input
+                type="number"
+                step="0.01"
+                placeholder="Suhu 6 Hari yang Lalu"
+                class="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border border-blueGray-300 outline-none focus:outline-none focus:ring w-full"
+                name="suhu_6"
+                required
+              />
+            </div>
+            <div class="mb-3 pt-0 leading-relaxed">
+              <label class="label">
+                <span class="label-text text-sm">Suhu 5 Hari yang Lalu</span>
+              </label>
+              <input
+                type="number"
+                step="0.01"
+                placeholder="Suhu 5 Hari yang Lalu"
+                class="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border border-blueGray-300 outline-none focus:outline-none focus:ring w-full"
+                name="suhu_5"
+                required
+              />
+            </div>
+            <div class="mb-3 pt-0 leading-relaxed">
+              <label class="label">
+                <span class="label-text text-sm">Suhu 4 Hari yang Lalu</span>
+              </label>
+              <input
+                type="number"
+                step="0.01"
+                placeholder="Suhu 4 Hari yang Lalu"
+                class="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border border-blueGray-300 outline-none focus:outline-none focus:ring w-full"
+                name="suhu_4"
+                required
+              />
+            </div>
+            <div class="mb-3 pt-0 leading-relaxed">
+              <label class="label">
+                <span class="label-text text-sm">Suhu 3 Hari yang Lalu</span>
+              </label>
+              <input
+                type="number"
+                step="0.01"
+                placeholder="Suhu 3 Hari yang Lalu"
+                class="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border border-blueGray-300 outline-none focus:outline-none focus:ring w-full"
+                name="suhu_3"
+                required
+              />
+            </div>
+            <div class="mb-3 pt-0 leading-relaxed">
+              <label class="label">
+                <span class="label-text text-sm">Suhu 2 Hari yang Lalu</span>
+              </label>
+              <input
+                type="number"
+                step="0.01"
+                placeholder="Suhu 2 Hari yang Lalu"
+                class="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border border-blueGray-300 outline-none focus:outline-none focus:ring w-full"
+                name="suhu_2"
+                required
+              />
+            </div>
+            <div class="mb-3 pt-0 leading-relaxed">
+              <label class="label">
+                <span class="label-text text-sm">Suhu 1 Hari yang Lalu</span>
+              </label>
+              <input
+                type="number"
+                step="0.01"
+                placeholder="Suhu 1 Hari yang Lalu"
+                class="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border border-blueGray-300 outline-none focus:outline-none focus:ring w-full"
+                name="suhu_1"
+                required
+              />
+            </div>
+            <div class="mb-3 pt-0 leading-relaxed">
+              <label class="label">
+                <span class="label-text text-sm">Suhu Hari Ini</span>
+              </label>
+              <input
+                type="number"
+                step="0.01"
+                placeholder="Suhu Hari Ini"
+                class="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border border-blueGray-300 outline-none focus:outline-none focus:ring w-full"
+                name="suhu_dday"
+                required
+              />
+            </div>
+
+            <!--<label class="label">
+              <span class="label-text text-sm">Data Suhu Udara</span>
+               <small class="block">Durasi Video Maks. 10 detik</small> 
+              <small class="block">Extensi File: CSV</small>
+            </label>
+            <input
+              class="form-control px-3 py-3 placeholder-blueGray-300 text-blueGray-600 block bg-clip-padding border border-blueGray-300 rounded transition ease-in-out focus:outline-none focus:ring w-full"
+              type="file"
+              accept="image/png, image/jpeg"
+              name="file"
+              required
+            />
+          </div>-->
+          <button
+            class="bg-blue-600 text-white active:bg-blue-700 font-bold uppercase text-sm px-6 py-3 mt-5 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+            type="submit"
+          >
+            Proses
+          </button>
+        </form>
+      </div>
+    </div>
+
+    {% if request.session.result %}
+    <div class="relative min-w- bg-white w-full mb-6 shadow-lg rounded">
+      <div class="block w-full overflow-x-auto p-5 text-sm">
+        <div class="flex items-center justify-start">
+          <div class="flex flex-col px-4">
+            <p class="text-xl font-semibold capitalize">
+              Suhu Udara Besok: {{ request.session.result }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="flex flex-wrap mt-4">
+    <div class="w-full mb-12 xl:mb-0 px-4">
+        <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+            <div class="rounded-t mb-0 px-4 py-3 border-0">
+                <div class="flex flex-wrap items-center">
+                    <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+                        <h3 class="font-semibold text-base text-blueGray-700">
+                            {{ title }}
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="block w-full overflow-x-auto p-5 text-base">
+                <form action="{% url 'kbdis.store' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="mb-3 pt-0  leading-relaxed">
+                        <label class="label">
+                            <span class="label-text text-sm">Nama Lahan</span>
+                        </label>
+                        <select name="vegetation" class="px-3 py-3 placeholder-blueGray-300 
+                        text-blueGray-600 relative bg-white rounded text-sm border border-blueGray-300 
+                        outline-none focus:outline-none focus:ring w-full" required>
+                            <option disabled selected>Pilih Lahan</option>
+                        {% for peatland in peatlands %}
+                            <option value="{{ peatland.id }}">{{ peatland.name }}</option>
+                        {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-3 pt-0  leading-relaxed">
+                        <label class="label">
+                            <span class="label-text text-sm">Curah Hujan Harian</span>
+                        </label>
+                        <input type="text" placeholder="Curah Hujan Harian" class="px-3 py-3 placeholder-blueGray-300 
+                        text-blueGray-600 relative bg-white rounded text-sm border border-blueGray-300 
+                        outline-none focus:outline-none focus:ring w-full" name="rainfall_today" required>
+                    </div>
+                    <div class="mb-3 pt-0  leading-relaxed">
+                        <label class="label">
+                            <span class="label-text text-sm">Curah Hujan Hari Kemarin</span>
+                        </label>
+                        <input type="text" placeholder="Curah Hujan Hari Kemarin" class="px-3 py-3 placeholder-blueGray-300 
+                        text-blueGray-600 relative bg-white rounded text-sm border border-blueGray-300 
+                        outline-none focus:outline-none focus:ring w-full" name="rainfall_yesterday" required>
+                    </div>
+                    <div class="mb-3 pt-0 ">
+                        <label class="label">
+                            <span class="label-text text-sm">Iklim</span>
+                        </label>
+                        <div class="flex justify-start">
+                            <div class="form-check">
+                                <input
+                                    class="form-check-input rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                                    type="radio" name="climate" value="1650" id="climate-el-nino">
+                                <label class="form-check-label inline-block text-gray-800" for="climate-el-nino">
+                                    El Niño
+                                </label>
+                            </div>
+                            <div class="form-check ml-3">
+                                <input
+                                    class="form-check-input rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                                    type="radio" name="climate" value="2500" id="climate-normal">
+                                <label class="form-check-label inline-block text-gray-800" for="climate-normal">
+                                    Iklim Normal/Non-El Niño
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="mb-3 pt-0  leading-relaxed">
+                        <label class="label">
+                            <span class="label-text text-sm">Tinggi Muka Air</span>
+                        </label>
+                        <input type="text" placeholder="Tinggi Muka Air" class="px-3 py-3 placeholder-blueGray-300 
+                        text-blueGray-600 relative bg-white rounded text-sm border border-blueGray-300 
+                        outline-none focus:outline-none focus:ring w-full" name="water_level" required>
+                    </div>
+                    <div class="mb-3 pt-0  leading-relaxed">
+                        <label class="label">
+                            <span class="label-text text-sm">Suhu Maksimum</span>
+                        </label>
+                        <input type="text" placeholder="Suhu Maksimum" class="px-3 py-3 placeholder-blueGray-300 
+                        text-blueGray-600 relative bg-white rounded text-sm border border-blueGray-300 
+                        outline-none focus:outline-none focus:ring w-full" name="max_temperature" required>
+                    </div> -->
+                    <button
+                        class="bg-blue-600 text-white active:bg-blue-700 font-bold uppercase text-sm px-6 py-3 mt-5 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                        type="submit">
+                        Proses
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        {% if request.session.result %}
+        <div class="relative min-w- bg-white w-full mb-6 shadow-lg rounded">
+            <div class="block w-full overflow-x-auto p-5 text-sm">
+                <div class="flex items-center justify-start ">
+                    <div class="flex flex-col px-4">
+                        <span class="text-base capitalize">{{ request.session.peatland }}</span>
+                        <!-- <p class="text-xl font-semibold capitalize">Jenis Kerapatan: {{ result_type|escape }}</p> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}

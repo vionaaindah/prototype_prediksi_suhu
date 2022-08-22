@@ -1,0 +1,221 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="flex flex-wrap mt-4">
+  <div class="w-full mb-12 xl:mb-0 px-4">
+    <div
+      class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded"
+    >
+      <div class="rounded-t mb-0 px-4 py-3 border-0">
+        <div class="flex flex-wrap items-center">
+          <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+            <center><h1 class="font-bold text-base text-blueGray-700">
+              {{ title }}
+            </h1></center>
+            <br>
+            <a href="{% url 'temperaturepredic.index' %}" class="bg-blue-600 text-white active:bg-blue-700 text-sm px-4 py-2 mt-5 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-0.5 mb-0.5 ease-linear transition-all duration-150">Prediksi dengan Masukkan File</a>
+          </div>
+        </div>
+      </div>
+      <div class="block w-full overflow-x-auto p-5 text-xs">
+        <form
+          action="{% url 'temperature.store' %}"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          {% csrf_token %}
+          <div class="mb-3 pt-0 leading-relaxed">
+            <div class="mb-3 pt-0 leading-relaxed">
+              <label class="label">
+                <span class="label-text text-sm">Suhu 11 Hari yang Lalu</span>
+              </label>
+              <input
+                type="number"
+                step="0.01"
+                placeholder="Suhu 11 Hari yang Lalu"
+                class="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border border-blueGray-300 outline-none focus:outline-none focus:ring w-full"
+                name="suhu_11"
+                required
+              />
+            </div>
+            <div class="mb-3 pt-0 leading-relaxed">
+              <label class="label">
+                <span class="label-text text-sm">Suhu 10 Hari yang Lalu</span>
+              </label>
+              <input
+                type="number"
+                step="0.01"
+                placeholder="Suhu 10 Hari yang Lalu"
+                class="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border border-blueGray-300 outline-none focus:outline-none focus:ring w-full"
+                name="suhu_10"
+                required
+              />
+            </div>
+            <div class="mb-3 pt-0 leading-relaxed">
+              <label class="label">
+                <span class="label-text text-sm">Suhu 9 Hari yang Lalu</span>
+              </label>
+              <input
+                type="number"
+                step="0.01"
+                placeholder="Suhu 9 Hari yang Lalu"
+                class="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border border-blueGray-300 outline-none focus:outline-none focus:ring w-full"
+                name="suhu_9"
+                required
+              />
+            </div>
+            <div class="mb-3 pt-0 leading-relaxed">
+              <label class="label">
+                <span class="label-text text-sm">Suhu 8 Hari yang Lalu</span>
+              </label>
+              <input
+                type="number"
+                step="0.01"
+                placeholder="Suhu 8 Hari yang Lalu"
+                class="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border border-blueGray-300 outline-none focus:outline-none focus:ring w-full"
+                name="suhu_8"
+                required
+              />
+            </div>
+            <div class="mb-3 pt-0 leading-relaxed">
+              <label class="label">
+                <span class="label-text text-sm">Suhu 7 Hari yang Lalu</span>
+              </label>
+              <input
+                type="number"
+                step="0.01"
+                placeholder="Suhu 7 Hari yang Lalu"
+                class="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border border-blueGray-300 outline-none focus:outline-none focus:ring w-full"
+                name="suhu_7"
+                required
+              />
+            </div>
+            <div class="mb-3 pt-0 leading-relaxed">
+              <label class="label">
+                <span class="label-text text-sm">Suhu 6 Hari yang Lalu</span>
+              </label>
+              <input
+                type="number"
+                step="0.01"
+                placeholder="Suhu 6 Hari yang Lalu"
+                class="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border border-blueGray-300 outline-none focus:outline-none focus:ring w-full"
+                name="suhu_6"
+                required
+              />
+            </div>
+            <div class="mb-3 pt-0 leading-relaxed">
+              <label class="label">
+                <span class="label-text text-sm">Suhu 5 Hari yang Lalu</span>
+              </label>
+              <input
+                type="number"
+                step="0.01"
+                placeholder="Suhu 5 Hari yang Lalu"
+                class="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border border-blueGray-300 outline-none focus:outline-none focus:ring w-full"
+                name="suhu_5"
+                required
+              />
+            </div>
+            <div class="mb-3 pt-0 leading-relaxed">
+              <label class="label">
+                <span class="label-text text-sm">Suhu 4 Hari yang Lalu</span>
+              </label>
+              <input
+                type="number"
+                step="0.01"
+                placeholder="Suhu 4 Hari yang Lalu"
+                class="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border border-blueGray-300 outline-none focus:outline-none focus:ring w-full"
+                name="suhu_4"
+                required
+              />
+            </div>
+            <div class="mb-3 pt-0 leading-relaxed">
+              <label class="label">
+                <span class="label-text text-sm">Suhu 3 Hari yang Lalu</span>
+              </label>
+              <input
+                type="number"
+                step="0.01"
+                placeholder="Suhu 3 Hari yang Lalu"
+                class="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border border-blueGray-300 outline-none focus:outline-none focus:ring w-full"
+                name="suhu_3"
+                required
+              />
+            </div>
+            <div class="mb-3 pt-0 leading-relaxed">
+              <label class="label">
+                <span class="label-text text-sm">Suhu 2 Hari yang Lalu</span>
+              </label>
+              <input
+                type="number"
+                step="0.01"
+                placeholder="Suhu 2 Hari yang Lalu"
+                class="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border border-blueGray-300 outline-none focus:outline-none focus:ring w-full"
+                name="suhu_2"
+                required
+              />
+            </div>
+            <div class="mb-3 pt-0 leading-relaxed">
+              <label class="label">
+                <span class="label-text text-sm">Suhu 1 Hari yang Lalu</span>
+              </label>
+              <input
+                type="number"
+                step="0.01"
+                placeholder="Suhu 1 Hari yang Lalu"
+                class="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border border-blueGray-300 outline-none focus:outline-none focus:ring w-full"
+                name="suhu_1"
+                required
+              />
+            </div>
+            <div class="mb-3 pt-0 leading-relaxed">
+              <label class="label">
+                <span class="label-text text-sm">Suhu Hari Ini</span>
+              </label>
+              <input
+                type="number"
+                step="0.01"
+                placeholder="Suhu Hari Ini"
+                class="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm border border-blueGray-300 outline-none focus:outline-none focus:ring w-full"
+                name="suhu_dday"
+                required
+              />
+            </div>
+
+            <!--<label class="label">
+              <span class="label-text text-sm">Data Suhu Udara</span>
+               <small class="block">Durasi Video Maks. 10 detik</small> 
+              <small class="block">Extensi File: CSV</small>
+            </label>
+            <input
+              class="form-control px-3 py-3 placeholder-blueGray-300 text-blueGray-600 block bg-clip-padding border border-blueGray-300 rounded transition ease-in-out focus:outline-none focus:ring w-full"
+              type="file"
+              accept="image/png, image/jpeg"
+              name="file"
+              required
+            />
+          </div>-->
+          <button
+            class="bg-blue-600 text-white active:bg-blue-700 font-bold uppercase text-sm px-6 py-3 mt-5 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+            type="submit"
+          >
+            Proses
+          </button>
+        </form>
+      </div>
+    </div>
+
+    {% if request.session.result %}
+    <div class="relative min-w- bg-white w-full mb-6 shadow-lg rounded">
+      <div class="block w-full overflow-x-auto p-5 text-sm">
+        <div class="flex items-center justify-start">
+          <div class="flex flex-col px-4">
+            <p class="text-xl font-semibold capitalize">
+              Suhu Udara Besok: {{ request.session.result }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock content %}

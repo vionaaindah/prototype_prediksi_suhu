@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "land-fire-ews",
+  "private_key_id": "5f1f26a403700a5b64e07c629923191f6779110c",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC0e9qOHKjbHZiV\nFF+sPXf1c21KVxcKUsgH2mmpsu5vJpV0D/tBE+k1vz5/anBpm5v1Zoc6dgYCRG3X\nATiDQaTe1N/I+AWUQlD64FaRC0VOa8ARu3uPjHEXZpTsCaFad0tl4SKrlgGLTJxW\nVR6A/TLlDxWNAGdF8Ofs55Fr9+1d9R158gnij2tl5CCTzGjRZKDBoXEC2EpyOFVS\nZ1fl+xwBYPSiHItVVRsXkJY2xg1+eQWYceah35VVuQ6Vv8YHPc9jr5MyTPz4JI7j\nAzorzwHl/R0NSm11OZR4Ynwn60VhInMUi+JFPMh3K25kqY/q1FDpu5szx829BXqF\nyjszNoElAgMBAAECggEABzCN4GGWfZzcTxTPynbSZTk5Z9ME7HJ0XHe50NRIOK5M\nf6I2JWQFKZDaQDO9xNjTKb+K8IW/r7rV6bdqbs257+4b+HYE4HotBQ/UJi5qqHj7\nXqZEAembnoDsITD+N/8OxlqySZKN5WSVliZvsvGJlv1dI7ZNGhV1yVN6Nz2NO6DI\nU0PH+J/pGnMlUDNDZWfVor2rYnQAWNklGQdv+eBY7qNo0oxR7lHyNgQPO6Eepv65\nB52+O+QdAHV9yyAWfAAPdpnKBWpILNebbvmKFp+OnLJ9V6i2xRDt3IH/f3Gntf93\nDIPFR4WqtymMiZgO1caAZTY89wmIgxR1CRN6gr7viwKBgQDxj/LYU+9U8k62b8iL\nqg1pBOSbJVAFSEWIVvTnj4jLwGr/DUM/pMRve39WHmp5JjmjMTo4hBoH4XQ3ANCb\nmjXpcD8PnSRuvS3bdTqPu5yZCosDzQTXExJdSRBHZPHtaqSXkM5f935cDohUEYpB\nKO25ArzCU4cjAzMe+ssef1p0lwKBgQC/RV3dc8TgVlF+U4lKsABJBvyUlgAY1jeu\nk7VBScFqgVnz8C+HqHU9kBju7wLlyk0hM1t3ZYahIxtjSwykGPEVbzaFNcHrUv/a\nIlS0vO7BhBNrdUbFZ3fRCMJGqbMC0t6Yzsg6MUrtVSCHYW3tfYz9p+HQgRZmKZTY\nJFkZ6lODowKBgQDCEsGrlbvKBqbAogyAUQ5XGoxELXUd2VOr1xkJ1WK1OBF+enxV\n7J25Z4IFgYhPbyuNdiZtc4yqWjMRYcE30myP8RNpCvpTUgA+ue9jvPpyZmsLkbLa\nzMLLWcEPawWHlk9IShnUNjY55Z8X08O82BItuwpGIe+HbLGsqRd5mB3nXwKBgQCN\nfiIW7UpJ7nDws5lPj+1WGH4G6QP/W5Dra0ddmdMkF7ZUd2yhvSOlvBBFyLfrB4GR\nOu3B4G/8ifz7sgwS5ISLp668Um02yTqNwnHJFi7FJxA6oRIOfCEtmH4nSegsAZQ7\nlFSYf9h+w0eB/rgURJllF6k71hKc1svOLO1g93B6YwKBgBsvbtF/jkUw8JHlIIi5\nE57g06AqZ4j9eLK35Y+j+hxo1kvZBHoWcTgJGzV8ADmvSBlmUSNLGHGjzdO+hPIQ\n3BJ2kpb6WUBpexDPbN5b0rlaNzWCUUVk4jUGW2iKI0/1ys8pMwTW2PviOWJf5DFS\nY6oSG8Iyy++qNZczJd8vV23O\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-qpply@land-fire-ews.iam.gserviceaccount.com",
+  "client_id": "110663021558601871399",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-qpply%40land-fire-ews.iam.gserviceaccount.com"
+}

@@ -1,0 +1,13 @@
+django==4.0.4
+djangorestframework
+pyyaml
+requests
+django-cors-headers
+django-oauth-toolkit
+torchvision
+psycopg2
+python-magic
+Pillow
+opencv-python==4.5.5.64
+fcm-django
+requests

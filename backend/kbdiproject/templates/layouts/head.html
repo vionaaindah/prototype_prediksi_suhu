@@ -1,0 +1,15 @@
+{% load static %}
+
+<head>
+    <title>{{ title }}</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    
+    <link rel="stylesheet" href="{% static 'css/app.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/tailwind.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/compiled-tailwind.min.css' %}" />
+
+    {% block css %}
+    {% endblock css %}
+</head>

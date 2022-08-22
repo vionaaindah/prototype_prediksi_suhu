@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% include "layouts/head.html" %}
+</head>
+
+<body class="text-blueGray-700 antialiased">
+    <noscript></noscript>
+    <div id="root">
+
+        <!-- Sidebar -->
+        {% include "layouts/sidebar.html" %}
+        <div class="relative md:ml-64 bg-red-50">
+
+            <!-- Relative Menu -->
+            {% include "layouts/relative-navigation.html" %}
+
+            <!-- Header -->
+            <div class="relative bg-purple-600 md:pt-32 pb-32 pt-12">
+                <div class="px-4 md:px-10 mx-auto w-full">
+                    {% block header %}
+                    {% endblock header %}
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="px-4 md:px-10 mx-auto w-full -m-24">
+                {% block content %}
+                {% endblock content %}
+                <!-- Footer -->
+                {% include "layouts/footer.html" %}
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Javascript -->
+    {% include "layouts/scripts.html" %}
+</body>
+
+</html>
