@@ -12,6 +12,7 @@
             </h1></center>
             <br>
             <a href={% url 'temperature.index' %} class="bg-blue-600 text-white active:bg-blue-700 text-sm px-4 py-2 mt-5 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-0.5 mb-0.5 ease-linear transition-all duration-150">Prediksi dengan Masukkan Angka</a>
+            <a href="https://drive.google.com/uc?export=download&id=1PA4lsVgJlgw0hv5mFEPyEm6OpMgDUtJZ" class="bg-blue-600 text-white active:bg-blue-700 text-sm px-4 py-2 mt-5 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-0.5 mb-0.5 ease-linear transition-all duration-150">Download Template Data</a>
           </div>
         </div>
       </div>
@@ -53,7 +54,7 @@
         <div class="flex items-center justify-start">
           <div class="flex flex-col px-4">
             <p class="text-xl font-semibold capitalize">
-              Suhu Udara Besok: {{ request.session.result }}
+              Prediksi Suhu Udara Besok: {{ request.session.result }}
             </p>
           </div>
         </div>
