@@ -7,7 +7,7 @@ import kbdiproject.settings as sett
 
 def index(request):
     context = {
-        'title': "Prediksi Suhu Udara Dengan Masukkan File",
+        'title': "Prediksi Suhu Udara Makro",
         'navbar': 'temperature'
     }
 
@@ -37,8 +37,9 @@ def store(request):
 
             df = pd.DataFrame(data)  # menjadikan array menjadi dataframe
 
-        parameter = 11
+        parameter = 10
         reshape_data(mikro, parameter)
+        suhu_mikro = df.values
 
         for j in range(0, parameter+1):
             df.iloc[:, j] = df.iloc[:, j].fillna(
@@ -51,7 +52,7 @@ def store(request):
 
         # membuat prediksi
         predict = model.predict(test_X)
-        test_X = test_X.reshape((test_X.shape[0], 12))
+        test_X = test_X.reshape((test_X.shape[0], 11))
 
         # invert scaling untuk prediksi
         prediksi = np.concatenate((test_X, predict), axis=1)
@@ -59,8 +60,20 @@ def store(request):
         prediksi = np.abs(prediksi)
         prediksi = prediksi[:, -1]
 
-        result = '%.2f °C' % prediksi[-1]
-
-        request.session['result'] = result
+        hasil_prediksi = '%.2f °C' % prediksi[-1]
+        suhu_mikro = suhu_mikro.tolist()
+        request.session['result'] = True
+        request.session['hasil_prediksi'] = hasil_prediksi
+        request.session['day_10'] = suhu_mikro[0][0]
+        request.session['day_9'] = suhu_mikro[0][1]
+        request.session['day_8'] = suhu_mikro[0][2]
+        request.session['day_7'] = suhu_mikro[0][3]
+        request.session['day_6'] = suhu_mikro[0][4]
+        request.session['day_5'] = suhu_mikro[0][5]
+        request.session['day_4'] = suhu_mikro[0][6]
+        request.session['day_3'] = suhu_mikro[0][7]
+        request.session['day_2'] = suhu_mikro[0][8]
+        request.session['day_1'] = suhu_mikro[0][9]
+        request.session['day'] = suhu_mikro[0][10]
 
     return redirect('temperaturepredic.index')

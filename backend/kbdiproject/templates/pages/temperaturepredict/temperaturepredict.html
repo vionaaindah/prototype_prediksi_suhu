@@ -11,8 +11,8 @@
               {{ title }}
             </h1></center>
             <br>
-            <a href={% url 'temperature.index' %} class="bg-blue-600 text-white active:bg-blue-700 text-sm px-4 py-2 mt-5 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-0.5 mb-0.5 ease-linear transition-all duration-150">Prediksi dengan Masukkan Angka</a>
-            <a href="https://drive.google.com/uc?export=download&id=1PA4lsVgJlgw0hv5mFEPyEm6OpMgDUtJZ" class="bg-blue-600 text-white active:bg-blue-700 text-sm px-4 py-2 mt-5 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-0.5 mb-0.5 ease-linear transition-all duration-150">Download Template Data</a>
+            <a href={% url 'temperature.index' %} class="bg-blue-600 text-white active:bg-blue-700 text-sm px-4 py-2 mt-5 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-0.5 mb-0.5 ease-linear transition-all duration-150">Input-an Angka</a>
+            <a href="https://drive.google.com/uc?export=download&id=1PA4lsVgJlgw0hv5mFEPyEm6OpMgDUtJZ" class="bg-blue-600 text-white active:bg-blue-700 text-sm px-4 py-2 mt-5 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-0.5 mb-0.5 ease-linear transition-all duration-150">Download Contoh Data</a>
           </div>
         </div>
       </div>
@@ -28,7 +28,7 @@
             <label class="label">
               <span class="label-text text-sm">Data Suhu Udara</span>
               <small class="block">Extensi File: CSV</small>
-              <small class="block">Minimal: 12 Data</small>
+              <small class="block">Minimal: 11 Data</small>
             </label>
             <input
               class="form-control px-3 py-3 placeholder-blueGray-300 text-blueGray-600 block bg-clip-padding border border-blueGray-300 rounded transition ease-in-out focus:outline-none focus:ring w-full"
@@ -54,7 +54,12 @@
         <div class="flex items-center justify-start">
           <div class="flex flex-col px-4">
             <p class="text-xl font-semibold capitalize">
-              Prediksi Suhu Udara Besok: {{ request.session.result }}
+              Suhu Udara Sebelumnya: 
+              <br> 
+              {{ request.session.day_10 }} °C, {{ request.session.day_9 }} °C, {{ request.session.day_8 }} °C, {{ request.session.day_7 }} °C, {{ request.session.day_6 }} °C, {{ request.session.day_5 }} °C, {{ request.session.day_4 }} °C, {{ request.session.day_3 }} °C, {{ request.session.day_2 }} °C, {{ request.session.day_1 }} °C, {{ request.session.day }} °C
+            </p>
+            <p class="text-xl font-semibold capitalize">
+              Prediksi Suhu Udara Besok: <b>{{ request.session.hasil_prediksi }}<b>
             </p>
           </div>
         </div>
