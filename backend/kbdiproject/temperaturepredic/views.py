@@ -48,7 +48,7 @@ def store(request):
         test_X = np.fft.fft(df[-1:])
         test_X = test_X.reshape((test_X.shape[0], 1, test_X.shape[1]))
 
-        model = sett.model
+        model = sett.model_makro
 
         # membuat prediksi
         predict = model.predict(test_X)

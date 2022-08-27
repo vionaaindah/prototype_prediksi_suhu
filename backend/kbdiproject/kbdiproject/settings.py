@@ -173,4 +173,5 @@ cred = credentials.Certificate(os.path.join(
     BASE_DIR, 'land-fire-ews-5f1f26a40370.json'))
 firebase_admin.initialize_app(cred)
 
-model = load_model('makro_daymodel.h5')
+model_makro = load_model('makro_model.h5')
+model_mikro = load_model('mikro_model.h5')
