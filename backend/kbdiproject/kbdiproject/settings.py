@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'users',
     'temperature',
     'temperaturepredic',
+    'microtemp',
 ]
 
 MIDDLEWARE = [

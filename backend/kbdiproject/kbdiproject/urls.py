@@ -27,6 +27,7 @@ urlpatterns = [
     path('peatlands/', include('peatlandcovers.urls')),
     path('temperature/', include('temperature.urls')),
     path('temperaturepredic/', include('temperaturepredic.urls')),
+    path('microtemp/', include('microtemp.urls')),
     # path('', include('users.urls')),
     path('login/', views.auth_login, name='login'),
     path('logout/', views.auth_logout, name='logout'),

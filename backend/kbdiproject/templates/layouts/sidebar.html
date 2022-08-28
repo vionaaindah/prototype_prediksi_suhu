@@ -110,15 +110,25 @@
           >
         </li>
         <li class="items-center">
-            <a
-              class="{% if navbar == 'temperature' %} text-orange-500 hover:text-orange-600 {% endif %} text-slate-700 hover:text-slate-500 text-xs uppercase py-3 font-bold block"
-              href="{% url 'temperature.index' %}"
-              ><i
-                class="{% if navbar == 'temperature' %} text-orange-500 {% endif %} text-slate-40 mr-2 text-sm"
-              ></i>
-              Prediksi Suhu Udara</a
-            >
-          </li>
+          <a
+            class="{% if navbar == 'microtemp' %} text-orange-500 hover:text-orange-600 {% endif %} text-slate-700 hover:text-slate-500 text-xs uppercase py-3 font-bold block"
+            href="{% url 'microtemp.index' %}"
+            ><i
+              class="{% if navbar == 'microtemp' %} text-orange-500 {% endif %} text-slate-40 mr-2 text-sm"
+            ></i>
+            Prediksi Suhu Udara Mikro</a
+          >
+        </li>
+        <li class="items-center">
+          <a
+            class="{% if navbar == 'temperature' %} text-orange-500 hover:text-orange-600 {% endif %} text-slate-700 hover:text-slate-500 text-xs uppercase py-3 font-bold block"
+            href="{% url 'temperature.index' %}"
+            ><i
+              class="{% if navbar == 'temperature' %} text-orange-500 {% endif %} text-slate-40 mr-2 text-sm"
+            ></i>
+            Prediksi Suhu Udara Makro</a
+          >
+        </li>
       </ul>
     </div>
   </div>

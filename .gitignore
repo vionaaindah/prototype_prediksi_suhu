@@ -1,1 +1,10 @@
 env
+backend/kbdiproject/kbdiproject/__pycache__/
+backend/kbdiproject/kbdis/__pycache__/
+backend/kbdiproject/microtemp/__pycache__/
+backend/kbdiproject/neuralnetwork/__pycache__/
+backend/kbdiproject/peatlandcovers/__pycache__/
+backend/kbdiproject/peatlandfields/__pycache__/
+backend/kbdiproject/temperature/__pycache__/
+backend/kbdiproject/temperaturepredict/__pycache__/
+backend/kbdiproject/user/__pycache__/

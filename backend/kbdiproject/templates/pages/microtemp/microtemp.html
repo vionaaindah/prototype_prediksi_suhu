@@ -1,0 +1,37 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="flex flex-wrap mt-4">
+  <div class="w-full mb-12 xl:mb-0 px-4">
+    <div
+      class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded"
+    >
+      <div class="rounded-t mb-0 px-4 py-3 border-0">
+        <div class="flex flex-wrap items-center">
+          <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+            <center><h1 class="font-bold text-base text-blueGray-700">
+              {{ title }}
+            </h1></center>
+            <br>
+            <center>
+              <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1522263/charts/4?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Suhu+Udara+Sumur+A+Tinggi&type=line"></iframe>
+            </center>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    {% if request.session.result %}
+    <div class="relative min-w- bg-white w-full mb-6 shadow-lg rounded">
+      <div class="block w-full overflow-x-auto p-5 text-sm">
+        <div class="flex items-center justify-start">
+          <div class="flex flex-col px-4">
+            <p class="text-xl font-semibold capitalize">
+              Prediksi Suhu Udara Selanjutnya: <b>{{ request.session.hasil_prediksi }}<b>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock content %}
