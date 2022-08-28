@@ -6,5 +6,5 @@ backend/kbdiproject/neuralnetwork/__pycache__/
 backend/kbdiproject/peatlandcovers/__pycache__/
 backend/kbdiproject/peatlandfields/__pycache__/
 backend/kbdiproject/temperature/__pycache__/
-backend/kbdiproject/temperaturepredict/__pycache__/
+backend/kbdiproject/temperaturepredic/__pycache__/
 backend/kbdiproject/user/__pycache__/
