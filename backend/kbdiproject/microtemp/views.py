@@ -1,7 +1,6 @@
 from re import I
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 import numpy as np
-import pandas as pd
 import kbdiproject.settings as sett
 # Create your views here.
 import requests
@@ -13,12 +12,12 @@ def index(request):
         'navbar': 'microtemp'
     }
 
-    Temp_FieldA = requests.get(
-        "https://api.thingspeak.com/channels/1522263/fields/4.json?api_key=XUFKUIBLFK2IZMT2&results=12")
+    Temp_FieldB = requests.get(
+        "https://api.thingspeak.com/channels/1685313/fields/4.json?api_key=YKY36BFEA12DFIWF&results=12")
     suhu_mikro = []
 
     for i in range(12):
-        a = float(Temp_FieldA.json()['feeds'][i-12]['field4'])
+        a = float(Temp_FieldB.json()['feeds'][i-12]['field4'])
         suhu_mikro.append(a)
 
     suhu_mikro = [suhu_mikro]
@@ -37,7 +36,9 @@ def index(request):
     prediksi = prediksi[:, -1]
 
     hasil_prediksi = '%.2f °C' % prediksi[-1]
+    suhu_terakhir = float(Temp_FieldB.json()['feeds'][-1]['field4'])
 
     request.session['result'] = True
     request.session['hasil_prediksi'] = hasil_prediksi
+    request.session['suhu_terakhir'] = suhu_terakhir
     return render(request, 'pages/microtemp/microtemp.html', context)
