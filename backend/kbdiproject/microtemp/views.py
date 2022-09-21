@@ -13,7 +13,7 @@ def index(request):
     }
 
     Temp_FieldB = requests.get(
-        "https://api.thingspeak.com/channels/1685313/fields/4.json?api_key=YKY36BFEA12DFIWF&results=12")
+        "https://api.thingspeak.com/channels/1685313/fields/4.json?results=12")
     suhu_mikro = []
 
     for i in range(12):
