@@ -83,5 +83,5 @@ tzdata==2022.2
 tzlocal==4.2
 uritemplate==4.1.1
 urllib3==1.26.11
-Werkzeug==2.2.2
+Werkzeug==3.0.3
 wrapt==1.14.1
